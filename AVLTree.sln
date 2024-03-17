@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AVLTree", "AVLTree\AVLTree.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AVLTreeConsole", "AVLTreeConsole\AVLTreeConsole.csproj", "{4736852F-0AE7-4022-9D72-46FB4EABD11E}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnitTestAVLTree", "UnitTestAVLTree\UnitTestAVLTree.csproj", "{9AFBB596-89D2-47DF-930C-B8F380CABC8F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{4736852F-0AE7-4022-9D72-46FB4EABD11E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4736852F-0AE7-4022-9D72-46FB4EABD11E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4736852F-0AE7-4022-9D72-46FB4EABD11E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9AFBB596-89D2-47DF-930C-B8F380CABC8F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9AFBB596-89D2-47DF-930C-B8F380CABC8F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9AFBB596-89D2-47DF-930C-B8F380CABC8F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9AFBB596-89D2-47DF-930C-B8F380CABC8F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -248,6 +248,10 @@ namespace AVLTree
         public void Remove(TKey key)
         {
             var removableNode = Find(key);
+            if(removableNode == null)
+            {
+                throw new KeyNotFoundException();
+            }
             var successorNode = removableNode;
             Node<TKey, TValue> successorNodeParent = null;
 
