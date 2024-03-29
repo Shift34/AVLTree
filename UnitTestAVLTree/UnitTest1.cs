@@ -2,6 +2,7 @@
 using System;
 using AVLTree;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace UnitTestAVLTree
 {
@@ -61,6 +62,44 @@ namespace UnitTestAVLTree
                 { n, n }
             };
             avltree.Remove(2);
+        }
+        [TestMethod]
+        public void Remove()
+        {
+            avltree = new AVLTree<int, int>();
+            int n = 10;
+            int [] randomInts = new int [n];
+            Random random = new Random();
+            for (int i = 0; i < n; i++)
+            {
+                bool flag = true;
+                while (flag)
+                {
+                    int randInt = random.Next(0, 3 * randomInts.Length);
+                    if (!randomInts.Contains(randInt))
+                    {
+                        randomInts[i] = randInt;
+                        avltree.Add(randInt, 0);
+                        flag = false;
+                    }
+                }
+            }
+            for(int i = 0; i < randomInts.Length; i+=2)
+            {
+                avltree.Remove(randomInts[i]);
+                randomInts[i] = int.MaxValue;
+            }
+            Array.Sort(randomInts);
+            List<int> avltre = new List<int>(5);
+            avltre.Sort();
+            int l = 0;
+            foreach (var item in avltre)
+            {
+                if(item != randomInts[l++])
+                {
+                    throw new Exception();
+                }
+            }
         }
         [TestMethod]
         public void AddAndContains()

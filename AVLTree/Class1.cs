@@ -215,7 +215,7 @@ namespace AVLTree
             node.RecalculateHeight();
             newNode.RecalculateHeight();
         }
-        internal void RotateRight(Node<TKey, TValue> node)
+        private void RotateRight(Node<TKey, TValue> node)
         {
             Node<TKey, TValue> newNode = node.Left;
             node.Left = newNode.Right;
