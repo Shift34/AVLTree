@@ -33,9 +33,10 @@ namespace UnitTestAVLTree
         public void FindNoExestingKey()
         {
             int n = 1;
+            int y = 2;
             avltree = new AVLTree<int, int>
             {
-                { 2, 2 }
+                { y, y }
             };
             Assert.AreEqual(false, avltree.ContainsKey(n));
         }
@@ -82,6 +83,31 @@ namespace UnitTestAVLTree
                 { n, n }
             };
             avltree.Add(n,n);
+        }
+        [TestMethod]
+        public void CountAfterRemove()
+        {
+            int n = 10;
+            avltree = new AVLTree<int, int>();
+            for (int i = 0; i < n; i++)
+            {
+                avltree.Add(i, i);
+            }
+            int count = avltree.Count; 
+            avltree.Remove(n - 1);
+            Assert.AreEqual(count - 1, avltree.Count);
+        }
+        [TestMethod]
+        public void Clear()
+        {
+            int n = 10;
+            avltree = new AVLTree<int, int>();
+            for(int i = 0; i< n; i++)
+            {
+                avltree.Add(i, i);
+            }
+            avltree.Clear();
+            Assert.AreEqual(0, avltree.Count);
         }
     }
 }

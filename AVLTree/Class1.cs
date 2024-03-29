@@ -70,7 +70,7 @@ namespace AVLTree
                 }
             }
         }
-        public int Height(Node<TKey, TValue> node)
+        private int Height(Node<TKey, TValue> node)
         {
             if (node == null)
             {
@@ -79,7 +79,7 @@ namespace AVLTree
 
             return node.Height;
         }
-        internal int GetBalance(Node<TKey, TValue> node)
+        private int GetBalance(Node<TKey, TValue> node)
         {
             if (node == null)
             {
@@ -89,7 +89,7 @@ namespace AVLTree
             return Height(node.Left) - Height(node.Right);
         }
 
-        internal void ReplaceNodes(Node<TKey, TValue> replaceableNode, Node<TKey, TValue> successorNode)
+        private void ReplaceNodes(Node<TKey, TValue> replaceableNode, Node<TKey, TValue> successorNode)
         {
             if (successorNode == null)
             {
@@ -151,7 +151,7 @@ namespace AVLTree
                 }
             }
         }
-        internal void BalanceTree(Node<TKey, TValue> node)
+        private void BalanceTree(Node<TKey, TValue> node)
         {
             while (node != null)
             {
@@ -185,7 +185,7 @@ namespace AVLTree
             }
         }
 
-        internal void RotateLeft(Node<TKey, TValue> node)
+        private void RotateLeft(Node<TKey, TValue> node)
         {
             Node<TKey, TValue> newNode = node.Right;
             node.Right = newNode.Left;
