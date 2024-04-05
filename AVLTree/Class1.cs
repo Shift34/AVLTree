@@ -245,17 +245,16 @@ namespace AVLTree
             node.RecalculateHeight();
             newNode.RecalculateHeight();
         }
-        public void Remove(TKey key)
+        public bool Remove(TKey key)
         {
             var removableNode = Find(key);
             if(removableNode == null)
             {
-                throw new KeyNotFoundException();
+                return false;
             }
             var successorNode = removableNode;
             Node<TKey, TValue> successorNodeParent = null;
-
-            if (successorNode.Left != null)
+            if(successorNode.Left != null && successorNode.Right != null)
             {
                 successorNode = successorNode.Left;
 
@@ -263,32 +262,79 @@ namespace AVLTree
                 {
                     successorNode = successorNode.Right;
                 }
-
                 successorNodeParent = successorNode.Parent;
+
+                ReplaceNodes(removableNode, successorNode);
             }
-            else if (successorNode.Right != null)
+            else if (successorNode.Left != null)
             {
-                successorNode = successorNode.Right;
-
-                while (successorNode.Left != null)
+                if(successorNode.Parent != null)
                 {
-                    successorNode = successorNode.Left;
+                    if(successorNode.Parent.Left == successorNode)
+                    {
+                        successorNode.Parent.Left = successorNode.Left;
+                        successorNode.Left.Parent = successorNode.Parent;
+                    }
+                    else
+                    {
+                        successorNode.Parent.Right = successorNode.Left;
+                        successorNode.Left.Parent = successorNode.Parent;
+                    }
+                    successorNodeParent = successorNode.Left.Parent;
                 }
-
-                successorNodeParent = successorNode.Parent;
+                else
+                {
+                    _root = successorNode.Left;
+                    _root.Parent = null;
+                }
             }
+            else if(successorNode.Right != null)
+            {
+                if (successorNode.Parent != null)
+                {
+                    if (successorNode.Parent.Left == successorNode)
+                    {
+                        successorNode.Parent.Left = successorNode.Right;
+                        successorNode.Right.Parent = successorNode.Parent;
+                    }
+                    else
+                    {
+                        successorNode.Parent.Right = successorNode.Right;
+                        successorNode.Right.Parent = successorNode.Parent;
+                    }
+                    successorNodeParent = successorNode.Right.Parent;
+                }
+                else
+                {
+                    _root = successorNode.Right;
+                    _root.Parent = null;
+                }
+            }
+            //else if (successorNode.Right != null)
+            //{
+            //    successorNode = successorNode.Right;
+
+            //    while (successorNode.Left != null)
+            //    {
+            //        successorNode = successorNode.Left;
+            //    }
+
+            //    successorNodeParent = successorNode.Parent;
+            //}
             else
             {
                 successorNode = null;
                 successorNodeParent = removableNode.Parent != null ? removableNode.Parent : null;
+                ReplaceNodes(removableNode, successorNode);
             }
-            ReplaceNodes(removableNode, successorNode);
+            //ReplaceNodes(removableNode, successorNode);
             if (successorNodeParent != null)
             {
                 successorNodeParent.RecalculateHeight();
                 BalanceTree(successorNodeParent);
             }
             Count--;
+            return true;
         }
         public void Add(TKey key, TValue value)
         {

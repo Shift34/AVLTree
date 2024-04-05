@@ -64,7 +64,7 @@ namespace UnitTestAVLTree
             avltree.Remove(2);
         }
         [TestMethod]
-        public void Remove()
+        public void AddAndRemoveEquals()
         {
             avltree = new AVLTree<int, int>();
             int n = 10;

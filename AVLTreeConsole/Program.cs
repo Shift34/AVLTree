@@ -40,7 +40,7 @@ namespace AVLTreeConsole
             }
             for (int i = 5000; i < 7000; i++)
             {
-                bintree.Remove(array[i]);
+                if (!bintree.Remove(array[i])) Console.WriteLine("No Remove Element");
             }
             for (int i = 0; i < 5000; i++)
             {
@@ -64,7 +64,7 @@ namespace AVLTreeConsole
             }
             for (int i = 5000; i < 7000; i++)
             {
-                sortdict.Remove(array[i]);
+                if (!sortdict.Remove(array[i])) Console.WriteLine("No Remove Element");
             }
             for (int i = 0; i < 5000; i++)
             {
