@@ -30,6 +30,14 @@ namespace AVLTreeConsole
                     }
                 }
             }
+            foreach (var t in array)
+            {
+                bintree.Add(t, 0);
+            }
+            for (int i = 0; i < array.Length; i++)
+            {
+                if (!bintree.Remove(array[i])) Console.WriteLine("No Remove Element");
+            }
 
             Stopwatch stopWatch = new Stopwatch();
             stopWatch.Start();

@@ -53,7 +53,6 @@ namespace UnitTestAVLTree
             Assert.AreEqual(0,avltree.Count);
         }
         [TestMethod]
-        [ExpectedException(typeof(KeyNotFoundException))]
         public void RemoveNoExestingKey()
         {
             int n = 1;
@@ -61,7 +60,7 @@ namespace UnitTestAVLTree
             {
                 { n, n }
             };
-            avltree.Remove(2);
+            Assert.AreEqual(false,avltree.Remove(2));
         }
         [TestMethod]
         public void AddAndRemoveEquals()
